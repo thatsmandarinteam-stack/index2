@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elena Marsh - Portfolio</title>
+<style>
+  /* Reset some default styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+  }
+
+  /* Header with background image */
+  header {
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .profile-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+
+  .profile-details {
+    color: #fff;
+  }
+
+  .profile-details h1 {
+    margin-bottom: 4px;
+    font-size: 1.5em;
+  }
+
+  .profile-details p {
+    font-size: 0.9em;
+  }
+
+  /* Contact Button */
+  .contact-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1f2937;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+  }
+
+  .contact-btn:hover {
+    background-color: #4b5563;
+  }
+
+  /* Main Content */
+.main {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* About Me */
+.about-me {
+  margin-bottom: 40px;
+}
+
+.about-me h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.about-me p {
+  margin-bottom: 10px;
+}
+
+.about-me a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.about-me a:hover {
+  text-decoration: underline;
+}
+
+/* Services */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.service {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 10px;
+  flex: 1 1 150px;
+  font-size: 0.9em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: default;
+}
+
+.service:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Featured Work */
+.featured-work {
+  margin-bottom: 40px;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.featured-header h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.btn-download {
+  background-color: #6366f1;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+  background-color: #4f46e5;
+}
+
+/* Featured items grid */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.featured-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.featured-item:hover {
+  transform: translateY(-2px);
+}
+
+.featured-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.featured-info {
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+.featured-info h4 {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.featured-info p {
+  color: #555;
+}
+
+/* Experience & Education */
+.section {
+  margin-bottom: 40px;
+}
+
+.section h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.experience-item,
+.education-item {
+  margin-bottom: 15px;
+  padding-left: 10px;
+  border-left: 3px solid #6366f1;
+}
+
+.experience-item h4,
+.education-item h4 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.experience-item p,
+.education-item p {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Case Studies & Side Projects */
+.case-studies,
+.side-projects {
+  margin-bottom: 40px;
+}
+
+.case-studies h3,
+.side-projects h3 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+.case-studies a,
+.side-projects span {
+  display: block;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #111;
+  transition: background-color 0.2s;
+}
+
+.case-studies a:hover,
+.side-projects span:hover {
+  background-color: #e5e7eb;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85em;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+  header {
+    height: 250px;
+  }
+
+  .profile-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-img {
+    margin-bottom: 10px;
+  }
+
+  .contact-btn {
+    position: static;
+    margin-top: 10px;
+    transform: none;
+  }
+
+  .services {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="profile-info">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Elena Marsh" class="profile-img" />
+    <div class="profile-details">
+      <h1>Elena Marsh</h1>
+      <p>Senior UI & UX Designer</p>
+      <p>Brooklyn, NYC</p>
+    </div>
+  </div>
+  <a href="#contact" class="contact-btn" id="get-in-touch">Get in touch</a>
+</header>
+
+<div class="main">
+
+  <!-- About Me -->
+  <section class="about-me" id="about">
+    <h2>About Me</h2>
+    <p>Hey there. I'm Elena — UX/UI designer based in Brooklyn, currently <strong>crafting digital products</strong> at WrapPixel, a SaaS startup focused on productivity tools.</p>
+    <p>Previously at Oak Studio, and creator of DesignKit and MentalWell.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <h2 style="margin-bottom:15px;">Services</h2>
+    <div class="service">Graphic Design</div>
+    <div class="service">User Experience</div>
+    <div class="service">Mobile App Design</div>
+    <div class="service">Brand Identity</div>
+    <div class="service">Responsive Design</div>
+    <div class="service">Prototyping</div>
+    <div class="service">Illustration</div>
+    <div class="service">Motion Graphics</div>
+    <div class="service">Print Design</div>
+    <div class="service">UI Development</div>
+    <div class="service">Interactive Media</div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="featured-work" id="featured">
+    <div class="featured-header">
+      <h3>Featured Work</h3>
+      <a href="#" class="btn-download">Download Portfolio</a>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-item">
+        <img src="https://images.unsplash.com/photo-1634861183634-6e2f3d66b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Branding + Web Design" class="featured-img" />
+        <div class="featured-info">
+          <h4>Branding + Web Design for Cleaning Services</h4>
+          <p>UX Designer, Framer Designer</p>
+        </div>
+      </div>
+      <div class="featured-item">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Brand Identity" class="featured-img" />
+        <div class="featured-info">
+          <h4>Brand Identity for a Health Care Company</h4>
+          <p>UX Designer, Framer Designer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <h3>Experience</h3>
+    <div class="experience-item">
+      <h4>Product Designer, Tailwind</h4>
+      <p>2022 – Present · Remote</p>
+      <ul>
+        <li>Led end-to-end redesign of dashboard UI, improving user retention by 23%</li>
+        <li>Collaborated with engineers and product managers to ship features faster</li>
+        <li>Designed components used in a system adopted by 4+ internal teams</li>
+      </ul>
+    </div>
+    <div class="experience-item">
+      <h4>UI/UX Designer - Asana</h4>
+      <p>2019 – 2022 · New York, NY</p>
+      <ul>
+        <li>Created design systems for client projects across finance and healthcare</li>
+        <li>Conducted user testing and research to validate designs</li>
+        <li>Helped junior designers grow via mentorship</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <h3>Education</h3>
+    <div class="education-item">
+      <h4>Sep 2015 - May 2019</h4>
+      <p><strong>B.F.A. in Graphic Design</strong></p>
+      <p>Pratt Institute — Brooklyn, NY</p>
+    </div>
+    <div class="education-item">
+      <h4>Mar 2021 - Aug 2021</h4>
+      <p><strong>UX Design Certificate</strong></p>
+      <p>Google UX Design - Coursera</p>
+    </div>
+    <div class="education-item">
+      <h4>Jan 2020 - Mar 2020</h4>
+      <p><strong>Front-End Web Development Bootcamp</strong></p>
+      <p>General Assembly — New York, NY</p>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="case-studies" id="case-studies">
+    <h3>Case Studies</h3>
+    <a href="#">Wellnest</a>
+    <a href="#">ScoutHire</a>
+  </section>
+
+  <!-- Side Projects -->
+  <section class="side-projects" id="side-projects">
+    <h3>Side Projects</h3>
+    <span>Formless</span>
+    <span>Gridsnap <small>Coming Soon</small></span>
+    <span>OrbitPay Mobile App <small>Coming Soon</small></span>
+    <span>Siteflow Page Builder <small>Coming Soon</small></span>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  2026 © Designed by Getnextjstemplates — All rights reserved<br/>
+  Created with care • 12k followers • Distributed by ThemeWagon
+</footer>
+
+<script>
+  // Example of a simple scroll to contact (if needed)
+  document.getElementById('get-in-touch').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('Thanks for reaching out!'); // Placeholder for contact action
+  });
+</script>
+
+</body>
+</html>
